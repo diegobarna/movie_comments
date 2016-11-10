@@ -2,22 +2,36 @@
 
 <br><br>
 <div class="pure-g">
-  <div class="pure-u movie-box">
+  <div class="pure-u">
     <div class="pure-g">
       <div class="pure-u-1-5">
         <img src=<%= @movie.poster %> alt="poster" width='100%'>
       </div>
       <div class="pure-u-4-5">
-        <div class="pure-g">
+        <div class="pure-g movie-box">
           <div class="pure-u-1">
-            <h1><%= @movie.title %> (<%= @movie.year %>)</h1>
+            <h2><%= @movie.title %> (<%= @movie.year %>)</h2>
           </div>
         </div>
-        <div class="pure-g">
+        <div class="pure-g movie-box">
           <div class="pure-u-1">
-            <p><%= @movie.synopsis %></p>
+            <p class="text-box"><%= @movie.synopsis %></p>
           </div>
-        </div class="pure-g">
+        </div>
+        <div class="pure-g comment-box">
+          <div class="pure-u-1">
+            <h3>Discussion</h3>
+          </div>
+            <% @comments.each do |comment| %>
+              <div class="pure-u-1">
+                <strong><%= comment.username %></strong>
+                <span class="created-date"><%= time_ago_in_words(comment.created_at) %> ago</span>
+              </div>
+              <div class="pure-u-1">
+                <p class="text-box"><%= comment.text %></p>
+              </div>
+            <% end %>
+        </div>
       </div>
     </div>
 

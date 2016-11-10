@@ -3,9 +3,22 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 h1 {
-  padding-left: 3%;
+  padding-left: 4%;
 }
 
 .go-to-movie .pure-button{
-  margin-left: 3%;
+  margin-left: 4%;
+}
+
+.movie-box, .comment-box {
+  padding-left: 4%;
+}
+
+.comment-box {
+  margin-top: 2%;
+}
+
+.text-box {
+  margin: 1% 1% 1.5% 1%;
+  padding-bottom: 1%;
 }

@@ -14,11 +14,12 @@ class MoviesController < ApplicationController
 
   # GET /movies/1
   def show
+    @comments = Comment.where('movie_id = ?', @movie.id)
   end
 
   # GET /movies/new
   def new
-    @movie = Movie.find_by('title LIKE ?','%#{params[:query]}%')
+    @movie = Movie.find_by('title LIKE ?',"%#{params[:query]}%")
     if @movie.nil?
       @movies = Movie.get_movies params[:query]
       render :new
@@ -30,13 +31,10 @@ class MoviesController < ApplicationController
   # POST /movies
   def create
     @movie = Movie.new(movie_params)
-
-    respond_to do |format|
-      if @movie.save
-        redirect_to @movie
-      else
-        render :search
-      end
+    if @movie.save
+      redirect_to @movie
+    else
+      render :search
     end
   end
 

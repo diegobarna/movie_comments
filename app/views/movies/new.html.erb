@@ -22,7 +22,7 @@
       </div class="pure-g">
       <div class="pure-g">
         <div class="pure-u-1 go-to-movie">
-          <%= button_to "Comment #{movie[:title]}", { action: "create" }, class: "pure-button pure-button-primary" %>
+          <%= button_to "Comment #{movie[:title]}", movies_path(movie: {title: movie[:title], poster: movie[:poster], year: movie[:year], synopsis: movie[:synopsis]}), class: "pure-button pure-button-primary" %>
         </div>
       </div class="pure-g">
     </div>

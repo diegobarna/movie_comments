@@ -6,14 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-movie = Movie.get_movies("casablanca").first
-Movie.create movie
+Movie.create Movie.get_movies("casablanca").first
+Movie.create Movie.get_movies("terminator").first
+Movie.create Movie.get_movies("resplandor").first
+Movie.create Movie.get_movies("persona").first
 
-movie = Movie.get_movies("terminator").first
-Movie.create movie
-
-movie = Movie.get_movies("resplandor").first
-Movie.create movie
-
-movie = Movie.get_movies("persona").first
-Movie.create movie
+Comment.create(movie_id: 1, username: "Diego C.", text: "Very good movie! I like it very much.")
+Comment.create(movie_id: 1, username: "Hater", text: "I hate this movie.")
+Comment.create(movie_id: 3, username: "Hater", text: "It's not even scary. Shity movie.")
+Comment.create(movie_id: 3, username: "Diego C.", text: "Not the best of Kubrick, but one of my favourite horror films.")
