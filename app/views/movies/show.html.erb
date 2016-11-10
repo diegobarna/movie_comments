@@ -1,0 +1,25 @@
+<%= link_to 'Search another movie', root_path, class: "pure-button pure-button-primary" %>
+
+<br><br>
+<div class="pure-g">
+  <div class="pure-u movie-box">
+    <div class="pure-g">
+      <div class="pure-u-1-5">
+        <img src=<%= @movie.poster %> alt="poster" width='100%'>
+      </div>
+      <div class="pure-u-4-5">
+        <div class="pure-g">
+          <div class="pure-u-1">
+            <h1><%= @movie.title %> (<%= @movie.year %>)</h1>
+          </div>
+        </div>
+        <div class="pure-g">
+          <div class="pure-u-1">
+            <p><%= @movie.synopsis %></p>
+          </div>
+        </div class="pure-g">
+      </div>
+    </div>
+
+  </div>
+</div>

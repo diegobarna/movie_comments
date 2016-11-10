@@ -1,0 +1,6 @@
+<h1>Search Movie</h1>
+
+<%= form_tag(new_movie_path, method: :get) do %>
+  <%= text_field_tag(:query) %>
+  <%= submit_tag("Search", class: "pure-button pure-button-primary") %>
+<% end %>

@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Movies</h1>
+
+<%= link_to 'New Search', root_path, class: "pure-button pure-button-primary"%>
+
+<br><br>
+
+<% @movies.each do |movie| %>
+  <div class="pure-g">
+    <div class="pure-u-1-5">
+      <img src=<%= movie.poster %> alt="poster" width=100%>
+    </div>
+    <div class="pure-u-4-5">
+      <div class="pure-g">
+        <div class="pure-u-1">
+          <h1><%= movie.title %> (<%= movie.year %>)</h1>
+        </div>
+      </div>
+      <div class="pure-g">
+        <div class="pure-u-1">
+          <p><%= movie.synopsis %></p>
+        </div>
+      </div class="pure-g">
+      <div class="pure-g">
+        <div class="pure-u-1 go-to-movie">
+          <%= link_to "Comment #{movie[:title]}", movie_path(:id => movie.id), class: "pure-button pure-button-primary" %>
+        </div>
+      </div class="pure-g">
+    </div>
+  </div>
+<% end %>
