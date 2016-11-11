@@ -22,18 +22,43 @@
           <div class="pure-u-1">
             <h3>Discussion</h3>
           </div>
-            <% @comments.each do |comment| %>
-              <div class="pure-u-1">
-                <strong><%= comment.username %></strong>
-                <span class="created-date"><%= time_ago_in_words(comment.created_at) %> ago</span>
-              </div>
-              <div class="pure-u-1">
-                <p class="text-box"><%= comment.text %></p>
-              </div>
-            <% end %>
+          <% @comments.each do |comment| %>
+            <div class="pure-u-1">
+              <strong><%= link_to "#{comment.username}", @user %></strong>
+              <span class="created-date"><%= time_ago_in_words(comment.created_at) %> ago</span>
+            </div>
+            <div class="pure-u-1">
+              <p class="text-box"><%= comment.text %></p>
+            </div>
+          <% end %>
+          <% if @user.nil? %>
+            <div class="pure-u-1">
+              <%= form_tag(user_login_path) do %>
+
+                <%= label_tag :username %>
+                <%= text_field_tag :username %>
+
+                <%= label_tag :password %>
+                <%= password_field_tag :password %>
+
+                <%= submit_tag "Login", class: "pure-button pure-button-primary" %>
+              <% end %>
+            </div>
+          <% else %>
+            <div class="pure-u-1">
+              <%= form_for([@movie, @comment]) do |f| %>
+                
+                <%= f.hidden_field :username, :value => @user[:username] %>
+
+                <%= f.label :text %>
+                <%= f.text_field :text %>
+
+                <%= submit_tag "Send comment", class: "pure-button pure-button-primary" %>
+              <% end %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
-
   </div>
 </div>

@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-  before_action :set_movie, only: [:show]
+  before_action :set_movie, only: :show
 
   # GET /movies/search
   def search
@@ -15,6 +15,8 @@ class MoviesController < ApplicationController
   # GET /movies/1
   def show
     @comments = Comment.where('movie_id = ?', @movie.id)
+    @comment = Comment.new
+    @user = User.find_by(id: session[:user_id])
   end
 
   # GET /movies/new
